@@ -9,20 +9,20 @@ class Region extends Model
 {
     use HasFactory;
     protected $table = 'regiones';
-    protected $primaryKey = 'id_region';
+    protected $primaryKey = 'id';
 
     public $incrementing = true;
 
     public $timestamps = true;
 
     protected $fillable = [
-        'id_region',
+        'id',
         'nombre',
         'lider',
     ];
 
     protected $attributes = [
-        'id_region' => 0,
+        'id' => 0,
         'nombre' => '',
         'lider' => '',
     ];

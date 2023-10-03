@@ -9,21 +9,21 @@ class Distrito extends Model
 {
     use HasFactory;
     protected $table = 'distritos';
-    protected $primaryKey = 'id_distrito';
+    protected $primaryKey = 'id';
 
     public $incrementing = true;
 
     public $timestamps = true;
 
     protected $fillable = [
-        'id_distrito',
+        'id',
         'nombre',
         'lider',
         'cantidad_iglesias'
     ];
 
     protected $attributes = [
-        'id_distrito' => 0,
+        'id' => 0,
         'nombre' => '',
         'lider' => '',
         'cantidad_iglesias' => 0

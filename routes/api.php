@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\GlobalController;
 use App\Http\Resources\RegionesDistritosCollection;
+use App\Http\Controllers\RegionesDistritosController;
 use App\Models\RegionesDistrito;
 
 /*
@@ -21,8 +22,9 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('/get-regionesDistritos', [GlobalController::Class, 'regionesDistritos'])->name('prueba');
-Route::put('/save-distritos', [\App\Http\Controllers\DistritoController::class, 'store']);
+Route::get('/regionesDistritos', [\App\Http\Controllers\Api\GlobalController::class, 'regionesDistritos']);
+Route::get('/distritos', [\App\Http\Controllers\Api\GlobalController::class, 'distritos']);
+Route::put('/saveDistritos', [\App\Http\Controllers\Api\GlobalController::class, 'saveDistritos']);
 Route::post('edit-distrito/{id}', [\App\Http\Controllers\DistritoController::class, 'editDistrito']);
 Route::delete('delete-distrito/{id}', [\App\Http\Controllers\DistritoController::class, 'deleteDistrito']);
 
