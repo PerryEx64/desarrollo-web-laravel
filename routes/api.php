@@ -22,11 +22,19 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('/regionesDistritos', [\App\Http\Controllers\Api\GlobalController::class, 'regionesDistritos']);
-Route::get('/distritos', [\App\Http\Controllers\Api\GlobalController::class, 'distritos']);
-Route::put('/saveDistritos', [\App\Http\Controllers\Api\GlobalController::class, 'saveDistritos']);
-Route::post('edit-distrito/{id}', [\App\Http\Controllers\DistritoController::class, 'editDistrito']);
-Route::delete('delete-distrito/{id}', [\App\Http\Controllers\DistritoController::class, 'deleteDistrito']);
+
+Route::middleware(['auth:sanctum'])->group(function () {
+    Route::get('/regionesDistritos', [\App\Http\Controllers\Api\GlobalController::class, 'regionesDistritos']);
+    Route::get('/distritos', [\App\Http\Controllers\Api\GlobalController::class, 'distritos']);
+    Route::put('/saveDistritos', [\App\Http\Controllers\Api\GlobalController::class, 'saveDistritos']);
+    Route::post('edit-distrito/{id}', [\App\Http\Controllers\DistritoController::class, 'editDistrito']);
+    Route::delete('delete-distrito/{id}', [\App\Http\Controllers\DistritoController::class, 'deleteDistrito']);
+});
+
+Route::post('/register', [\App\Http\Controllers\Auth\RegisteredUserController::class, 'storeUserApi']);
+Route::post('/login', [\App\Http\Controllers\Auth\ConfirmablePasswordController::class, 'login']);
+
+
 
 
 
